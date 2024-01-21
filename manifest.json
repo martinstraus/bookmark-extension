@@ -29,5 +29,8 @@
         }
     },
     "permissions": ["activeTab","storage"],
-    "options_page": "options.html"
+    "options_page": "options.html",
+    "host_permissions": [
+        "https://api.levadura.ar/"
+    ]
 }

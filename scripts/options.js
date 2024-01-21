@@ -1,19 +1,21 @@
 function saveOptions() {
-    var preferences = {
-        token: document.getElementById("token").value
+    const preferences = {
+        api_key: document.getElementById("api_key").value
     };
     chrome.storage.sync.set(
             preferences,
             () => {
+        // Let service worker know about the change in the configuration.
+        chrome.runtime.sendMessage({preferences: preferences});
     }
     );
 }
 
 function loadOptions() {
     chrome.storage.sync.get(
-            {token: ''},
+            {api_key: ''},
             (preferences) => {
-        document.getElementById("token").value = preferences.token;
+        document.getElementById("api_key").value = preferences.api_key;
     }
     );
 }
